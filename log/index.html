@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>3D-Keramikdrucker Log · PHBern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ph-red: #ac0101;
+            --ph-red-hover: #930101;
+            --ph-red-active: #780101;
+            --ph-red-bg: #fdf0f0;
+            --ph-blue: #457d9a;
+            --ph-blue-dark: #2e5366;
+            --ph-blue-bg: #e9f1f5;
+            --ph-black: #1a1a1a;
+            --ph-gray-darker: #484848;
+            --ph-gray-dark: #757575;
+            --ph-gray: #979797;
+            --ph-gray-light: #d8d8d8;
+            --ph-gray-lighter: #fafafa;
+            --ph-white: #ffffff;
+            --ph-green: #338811;
+            --radius: 6px;
+            --radius-lg: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Source Sans 3", "Segoe UI", Helvetica, Arial, sans-serif;
+            background: var(--ph-gray-lighter);
+            color: var(--ph-black);
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.6rem;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        /* ---- Titelzeile ---- */
+        .title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.6rem 0 0.2rem;
+        }
+
+        .ph-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--ph-red);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .title-bar h1 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ph-black);
+            letter-spacing: 0.02em;
+        }
+
+        .anleitung-link {
+            display: block;
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--ph-blue);
+            text-decoration: none;
+            padding-bottom: 0.2rem;
+        }
+
+        .anleitung-link:hover { text-decoration: underline; }
+
+        /* ---- Karten ---- */
+        .card {
+            background: var(--ph-white);
+            border: none;
+            border-radius: var(--radius-lg);
+            padding: 0.65rem 0.75rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--ph-gray-dark);
+            margin-bottom: 0.35rem;
+        }
+
+        /* ---- Eingaben ---- */
+        .name-input, .andere-input {
+            width: 100%;
+            background: var(--ph-white);
+            border: 1px solid var(--ph-gray-light);
+            border-radius: var(--radius);
+            padding: 0.6rem 0.65rem;
+            color: var(--ph-black);
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .name-input:focus, .andere-input:focus {
+            border-color: var(--ph-red);
+            box-shadow: 0 0 0 2px rgba(172, 1, 1, 0.12);
+        }
+
+        .name-input::placeholder, .andere-input::placeholder { color: var(--ph-gray); }
+
+        .andere-input {
+            margin-top: 0.4rem;
+            display: none;
+            font-size: 0.85rem;
+            padding: 0.5rem 0.65rem;
+        }
+
+        .andere-input.visible { display: block; }
+
+        /* ---- Umschaltknöpfe ---- */
+        .toggle-group {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 0.6rem 0.3rem;
+            background: #f0f0f0;
+            border: 1px solid #e8e8e8;
+            border-radius: var(--radius);
+            color: var(--ph-gray-darker);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .toggle-btn:active { transform: scale(0.97); }
+
+        .toggle-btn.drucker.selected {
+            background: var(--ph-blue-bg);
+            border-color: var(--ph-blue);
+            color: var(--ph-blue-dark);
+        }
+
+        .toggle-btn.masse.selected {
+            background: var(--ph-red-bg);
+            border-color: var(--ph-red);
+            color: var(--ph-red);
+        }
+
+        /* ---- Senden ---- */
+        .submit-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--ph-red);
+            border: none;
+            border-radius: var(--radius);
+            color: var(--ph-white);
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+
+        .submit-btn:hover { background: var(--ph-red-hover); }
+        .submit-btn:active { background: var(--ph-red-active); }
+        .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+        .status {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--ph-gray-dark);
+            min-height: 1.2rem;
+            padding-top: 0.3rem;
+        }
+
+        .status.error { color: var(--ph-red); }
+
+        /* ---- Problem melden ---- */
+        .btn-problem {
+            display: block;
+            width: 100%;
+            padding: 0.6rem;
+            background: none;
+            border: none;
+            color: var(--ph-gray-dark);
+            font-family: inherit;
+            font-size: 0.85rem;
+            text-align: center;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .btn-problem:hover { color: var(--ph-gray-darker); }
+
+        /* ---- Log-Ansicht ---- */
+        .log-section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            color: var(--ph-gray-dark);
+            padding: 0.5rem 0 0.2rem;
+        }
+
+        .sheet-frame {
+            width: 100%;
+            height: 45vh;
+            border: none;
+            border-radius: var(--radius-lg);
+            background: var(--ph-white);
+        }
+
+        .btn-sheet-link {
+            display: block;
+            text-align: center;
+            font-size: 0.68rem;
+            color: var(--ph-blue);
+            text-decoration: none;
+            padding: 0.3rem 0;
+        }
+
+        .btn-sheet-link:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 0.2rem 0 0.5rem;
+            font-size: 0.62rem;
+            color: var(--ph-gray);
+        }
+
+        /* ---- Hinweisfenster ---- */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .popup-overlay.visible { display: flex; }
+
+        .popup {
+            background: var(--ph-white);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem 1rem;
+            max-width: 360px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .popup-icon {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .popup-title {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--ph-green);
+            margin-bottom: 0.75rem;
+        }
+
+        .popup-rules {
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--ph-black);
+            margin-bottom: 1rem;
+        }
+
+        .popup-rule { padding: 0.4rem 0; }
+
+        .popup-rule:nth-child(-n+3) { font-weight: 700; }
+
+        .popup .submit-btn { margin-top: 0.25rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="title-bar">
+        <span class="ph-dot"></span>
+        <h1>3D-Keramikdrucker Log</h1>
+    </div>
+    <a class="anleitung-link" href="https://ljuokr.github.io/keramikdruck/" target="_blank" rel="noopener noreferrer">Anleitung Keramikdruck öffnen ↗</a>
+
+    <div class="card">
+        <div class="section-label">Name und Vorname</div>
+        <input class="name-input" id="nameInput" type="text" placeholder="Name und Vorname" autocomplete="name">
+    </div>
+
+    <div class="card">
+        <div class="section-label">Drucker</div>
+        <div class="toggle-group">
+            <button class="toggle-btn drucker" data-group="drucker" data-value="rot" onclick="toggleSingle(this)">Drucker rot</button>
+            <button class="toggle-btn drucker" data-group="drucker" data-value="blau" onclick="toggleSingle(this)">Drucker blau</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="section-label">Druckmasse</div>
+        <div class="toggle-group">
+            <button class="toggle-btn masse" data-group="masse" data-value="G&S 468" onclick="toggleSingle(this)">G&amp;S 468</button>
+            <button class="toggle-btn masse" data-group="masse" data-value="Andere" onclick="toggleSingle(this)">Andere</button>
+        </div>
+        <input class="andere-input" id="andereInput" type="text" placeholder="Druckmasse eingeben …">
+    </div>
+
+    <div class="card">
+        <button class="submit-btn" id="submitBtn" onclick="submitEntry()">Eintragen</button>
+        <div class="status" id="status"></div>
+    </div>
+
+    <button class="btn-problem" onclick="meldeProblem()">Problem melden</button>
+
+    <div class="log-section-label">Letzte Einträge</div>
+    <iframe id="sheetFrame" class="sheet-frame" src="about:blank" title="Letzte Einträge im 3D-Keramikdrucker Log"></iframe>
+
+    <a class="btn-sheet-link" href="https://docs.google.com/spreadsheets/d/1PtmpGLJMAhaIWc2qkFW0k09kgqqUeOhTT-1WY6OhOjU/edit" target="_blank" rel="noopener noreferrer">Google Sheet öffnen ↗</a>
+
+    <div class="footer">PHBern · 3D-Keramikdrucker Log · D031</div>
+
+</div>
+
+<!-- ===== Hinweisfenster nach dem Eintrag ===== -->
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup">
+        <div class="popup-icon">✓</div>
+        <div class="popup-title">Eintrag gespeichert</div>
+        <div class="popup-rules">
+            <div class="popup-rule">🔌 Motorkabel des Extruders nur ein- oder ausstecken, wenn der Drucker am Hauptschalter ausgeschaltet ist.</div>
+            <div class="popup-rule">🔩 Tube immer mit sämtlichen Schrauben fixieren. Tube-Schrauben nur schwach anziehen. Nach jedem Gebrauch RETRACT ausführen, auch bei halbvoller Tube.</div>
+            <div class="popup-rule">🧤 Druckmasse höchstens vier Tage im Extruder lassen, Düse dazwischen mit feuchtem Tuch und Gummihandschuh abdecken.</div>
+            <div class="popup-rule">🚰 Keramikreste nur am Waschbecken mit Tonabscheider abspülen (A027, D023). Tonreste nie in den Abfall.</div>
+            <div class="popup-rule">🧱 Nicht im D031 schleifen. Trocknende Stücke mit Name und Datum beschriften, nach spätestens einer Woche wegräumen.</div>
+            <div class="popup-rule">🔥 Der Brennofen wird nur von Dozierenden bedient. Brand früh anfragen.</div>
+        </div>
+        <button class="submit-btn" onclick="closePopup()">Verstanden</button>
+    </div>
+</div>
+
+<script>
+    // ============================================================
+    // Web-App-URL des Apps Script (siehe README, Abschnitt Log).
+    // Solange der Platzhalter steht, wird nur in der Konsole protokolliert.
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGlGFuPCjeI5Y7dZd2LcwuI3yQ_7P9VNTVWrX_TkvetdlZgNpryD5UKUytitcNmsXb/exec';
+    const SHEET_ID = '1PtmpGLJMAhaIWc2qkFW0k09kgqqUeOhTT-1WY6OhOjU';
+    const SHEET_LIVE_URL = 'https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:html';
+    // ============================================================
+
+    // Gespeicherten Namen wiederherstellen (localStorage kann im privaten Modus fehlen)
+    function remember(key, value) {
+        try {
+            if (value === undefined) return localStorage.getItem(key);
+            localStorage.setItem(key, value);
+        } catch (err) { return null; }
+    }
+    const savedName = remember('keramikdrucker_name');
+    if (savedName) {
+        document.getElementById('nameInput').value = savedName;
+    }
+
+    loadLog();
+
+    function loadLog() {
+        document.getElementById('sheetFrame').src = SHEET_LIVE_URL + '&t=' + Date.now();
+    }
+
+    // Drucker und Masse: Einfachauswahl
+    function toggleSingle(btn) {
+        const group = btn.dataset.group;
+        document.querySelectorAll(`[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        if (group === 'masse') {
+            const andereInput = document.getElementById('andereInput');
+            andereInput.classList.toggle('visible', btn.dataset.value === 'Andere');
+            if (btn.dataset.value === 'Andere') andereInput.focus();
+        }
+    }
+
+    function getSelectedSingle(group) {
+        const sel = document.querySelector(`[data-group="${group}"].selected`);
+        return sel ? sel.dataset.value : '';
+    }
+
+    function getSelectedMasse() {
+        const sel = getSelectedSingle('masse');
+        if (sel === 'Andere') return document.getElementById('andereInput').value.trim();
+        return sel;
+    }
+
+    function setStatus(msg, type = '') {
+        const el = document.getElementById('status');
+        el.textContent = msg;
+        el.className = 'status ' + type;
+    }
+
+    function showPopup() { document.getElementById('popupOverlay').classList.add('visible'); }
+    function closePopup() {
+        document.getElementById('popupOverlay').classList.remove('visible');
+        document.querySelectorAll('.toggle-btn.selected').forEach(b => b.classList.remove('selected'));
+        document.getElementById('andereInput').classList.remove('visible');
+        document.getElementById('andereInput').value = '';
+        setStatus('');
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('submitBtn').textContent = 'Eintragen';
+        loadLog();
+    }
+
+    // Störungen gehen gemäss Nutzungskonzept an alle drei
+    function meldeProblem() {
+        const to = 'lukas.jordi@phbern.ch,alain.wittwer@phbern.ch,michael.steiner@phbern.ch';
+        const subject = encodeURIComponent('Problem 3D-Keramikdrucker D031');
+        const body = encodeURIComponent('Hallo,\n\nich möchte ein Problem mit dem 3D-Keramikdrucker melden (rot oder blau?):\n\n');
+        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+
+    async function submitEntry() {
+        const name = document.getElementById('nameInput').value.trim();
+        const drucker = getSelectedSingle('drucker');
+        const masse = getSelectedMasse();
+
+        if (!name || name.split(/\s+/).length < 2) { setStatus('Bitte Name und Vorname eingeben', 'error'); document.getElementById('nameInput').focus(); return; }
+        if (!drucker) { setStatus('Bitte Drucker wählen', 'error'); return; }
+        if (!getSelectedSingle('masse')) { setStatus('Bitte Druckmasse wählen', 'error'); return; }
+        if (!masse) { setStatus('Bitte Druckmasse eingeben', 'error'); document.getElementById('andereInput').focus(); return; }
+
+        remember('keramikdrucker_name', name);
+
+        const now = new Date();
+        const datum = now.toLocaleDateString('de-CH');
+        const zeit = now.toLocaleTimeString('de-CH', { hour: '2-digit', minute: '2-digit' });
+
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.textContent = 'Sende …';
+        setStatus('');
+
+        const payload = { name, datum, zeit, drucker, masse };
+
+        try {
+            if (GOOGLE_SCRIPT_URL === 'HIER_DEINE_GOOGLE_APPS_SCRIPT_URL') {
+                console.log('Demo-Eintrag:', payload);
+                await new Promise(r => setTimeout(r, 600));
+                showPopup();
+                return;
+            }
+
+            const params = new URLSearchParams(payload);
+            await fetch(GOOGLE_SCRIPT_URL + '?' + params.toString(), { mode: 'no-cors' });
+            showPopup();
+        } catch (err) {
+            console.error(err);
+            setStatus('Fehler beim Senden. Nochmal versuchen.', 'error');
+            btn.disabled = false;
+            btn.textContent = 'Eintragen';
+        }
+    }
+</script>
+
+</body>
+</html>

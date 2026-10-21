@@ -1,0 +1,788 @@
+[
+  {
+    "slug": "keramikdruck",
+    "label": "Übersicht",
+    "title": "3D-Keramikdruck",
+    "sections": [
+      {
+        "id": "kopf",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>3D-Keramikdruck</h1><p class=\"lead\">Fachbereich <a href=\"https://sites.google.com/view/design-und-technik/home\" rel=\"noopener noreferrer\" target=\"_blank\">Design &amp; Technik</a></p><p>Diese Anleitung führt Schritt für Schritt vom 3D-Modell über das Slicen und Drucken auf dem 3D PotterBot Micro 10 bis zum gebrannten Stück. Sie beschränkt sich auf das Wichtigste, damit beim ersten Druck nichts schiefgeht und danach selbständiges Arbeiten möglich ist.</p><figure class=\"schritt\"><img src=\"/assets/potterbot-micro10.png\" alt=\"3D PotterBot Micro 10 mit gefüllter Tube und gedrucktem Gefäss auf der Druckplatte\" width=\"560\" height=\"894\" loading=\"lazy\"><figcaption>3D PotterBot Micro 10. Bild: <a href=\"https://3dpotter.com/faq/#copyright\" rel=\"noopener noreferrer\" target=\"_blank\">3D Potter</a>, CC BY.</figcaption></figure>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "so-geht-ihr-vor",
+        "accordion": false,
+        "title": "Vorgehen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Vorgehen</h2><p>Vor der Nutzung die <a href=\"/regeln-d031\">Regeln im D031</a> lesen, jede Nutzung im <a href=\"https://ljuokr.github.io/keramikdruck/log/\" rel=\"noopener noreferrer\" target=\"_blank\">Log</a> eintragen.</p><ol><li><a href=\"/modell-erstellen\">Modellieren</a>: Form nach den <a href=\"/modell-erstellen#anforderungen\">Anforderungen</a> entwerfen, als STL-Datei exportieren.</li><li><a href=\"/slicen\">Slicen</a>: Modell in PrusaSlicer mit dem PotterBot-Profil in Schichten zerlegen, als G-Code-Datei speichern.</li><li><a href=\"/masse-und-drucker\">Drucken</a>: Druckmasse am Vortag wägen und bei Bedarf aufbereiten, am Drucktag kneten, Tube befüllen und einsetzen, Drucker verbinden, PRIME, drucken, RETRACT, reinigen.</li><li><a href=\"/trocknen\">Trocknen</a>: langsam und gut abgedeckt.</li><li><a href=\"/nachbearbeitung\">Nachbearbeiten</a>: Boden begradigen, am besten sobald das Stück beim Trocknen lederhart ist.</li><li><a href=\"/brennen\">Brennen</a>: früh mit den verantwortlichen Dozierenden absprechen, nur sie bedienen den Brennofen.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "vom-modell",
+        "accordion": false,
+        "title": "Vom Modell zum gebrannten Objekt",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Vom Modell zum gebrannten Objekt</h2><div class=\"diagram\" tabindex=\"0\" role=\"region\" aria-label=\"Ablaufgrafik, bei Bedarf seitlich verschiebbar\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 390\" role=\"img\" aria-labelledby=\"stl-title stl-desc\" font-family=\"Lato, Arial, sans-serif\" fill=\"#222\">\n<title id=\"stl-title\">Vom Modell zum gebrannten Objekt</title>\n<desc id=\"stl-desc\">Schritt 1, Modellieren: vier Wege, Tinkercad (im Browser, einfach), Autodesk Fusion (massgenau, ein Profil wird zur Form gedreht), Blender (frei modellieren, organische Formen) und KI-Code (die KI schreibt Code, OpenSCAD macht daraus die Form). Alle vier Wege münden in der STL-Datei. Danach folgen Schritt 2 Slicen in PrusaSlicer im Spiralvasenmodus, Schritt 3 Drucken auf dem PotterBot Micro 10 mit 4-mm-Düse, Schritt 4 Trocknen, langsam und gut abgedeckt, Schritt 5 Nachbearbeiten, im lederharten Zustand den Boden begradigen, Schritt 6 Brennen, Rohbrand montags und mittwochs bei 950 Grad.</desc>\n<defs><marker id=\"stl-pfeil\" viewBox=\"0 0 10 10\" refX=\"0\" refY=\"5\" markerWidth=\"10\" markerHeight=\"10\" markerUnits=\"userSpaceOnUse\" orient=\"auto\"><path d=\"M0,0 L10,5 L0,10 z\" fill=\"#087d84\"/></marker></defs>\n<circle cx=\"25\" cy=\"15\" r=\"11\" fill=\"#087d84\"/><text x=\"25\" y=\"20\" font-size=\"15\" font-weight=\"bold\" fill=\"#fff\" text-anchor=\"middle\">1</text>\n<text x=\"42\" y=\"20\" font-size=\"16\" font-weight=\"bold\">Modellieren</text>\n<rect x=\"88\" y=\"38\" width=\"140\" height=\"72\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<text x=\"158\" y=\"62\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Tinkercad</text>\n<text x=\"158\" y=\"84\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">im Browser,</text>\n<text x=\"158\" y=\"102\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">einfach</text>\n<rect x=\"236\" y=\"38\" width=\"140\" height=\"72\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<text x=\"306\" y=\"62\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Autodesk Fusion</text>\n<text x=\"306\" y=\"84\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">massgenau,</text>\n<text x=\"306\" y=\"102\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">Profil drehen</text>\n<rect x=\"384\" y=\"38\" width=\"140\" height=\"72\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<text x=\"454\" y=\"62\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Blender</text>\n<text x=\"454\" y=\"84\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">frei modellieren,</text>\n<text x=\"454\" y=\"102\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">organische Formen</text>\n<rect x=\"532\" y=\"38\" width=\"140\" height=\"72\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<text x=\"602\" y=\"62\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">KI-Code</text>\n<text x=\"602\" y=\"84\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">KI schreibt Code,</text>\n<text x=\"602\" y=\"102\" font-size=\"15\" fill=\"#646464\" text-anchor=\"middle\">Form in OpenSCAD</text>\n<g fill=\"none\" stroke=\"#087d84\" stroke-width=\"2\" marker-end=\"url(#stl-pfeil)\">\n<path d=\"M158,111 C158,136.5 305,136.5 305,162\"/>\n<path d=\"M306,111 C306,136.5 355,136.5 355,162\"/>\n<path d=\"M454,111 C454,136.5 405,136.5 405,162\"/>\n<path d=\"M602,111 C602,136.5 455,136.5 455,162\"/>\n</g>\n<rect x=\"260\" y=\"172\" width=\"240\" height=\"46\" rx=\"6\" fill=\"#087d84\"/>\n<text x=\"380\" y=\"201\" font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\" fill=\"#fff\">STL-Datei</text>\n<path d=\"M380,218 C380,243.5 72,243.5 72,269\" fill=\"none\" stroke=\"#087d84\" stroke-width=\"2\" marker-end=\"url(#stl-pfeil)\"/>\n<rect x=\"4\" y=\"290\" width=\"136\" height=\"92\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<circle cx=\"72.0\" cy=\"290\" r=\"11\" fill=\"#087d84\"/><text x=\"72.0\" y=\"295\" font-size=\"15\" font-weight=\"bold\" fill=\"#fff\" text-anchor=\"middle\">2</text>\n<text x=\"72.0\" y=\"326\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Slicen</text>\n<text x=\"72.0\" y=\"348\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">PrusaSlicer,</text>\n<text x=\"72.0\" y=\"366\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">Spiralvasenmodus</text>\n<rect x=\"158\" y=\"290\" width=\"136\" height=\"92\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<circle cx=\"226.0\" cy=\"290\" r=\"11\" fill=\"#087d84\"/><text x=\"226.0\" y=\"295\" font-size=\"15\" font-weight=\"bold\" fill=\"#fff\" text-anchor=\"middle\">3</text>\n<text x=\"226.0\" y=\"326\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Drucken</text>\n<text x=\"226.0\" y=\"348\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">PotterBot Micro 10,</text>\n<text x=\"226.0\" y=\"366\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">4-mm-Düse</text>\n<rect x=\"312\" y=\"290\" width=\"136\" height=\"92\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<circle cx=\"380.0\" cy=\"290\" r=\"11\" fill=\"#087d84\"/><text x=\"380.0\" y=\"295\" font-size=\"15\" font-weight=\"bold\" fill=\"#fff\" text-anchor=\"middle\">4</text>\n<text x=\"380.0\" y=\"326\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Trocknen</text>\n<text x=\"380.0\" y=\"348\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">langsam,</text>\n<text x=\"380.0\" y=\"366\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">gut abgedeckt</text>\n<rect x=\"466\" y=\"290\" width=\"136\" height=\"92\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<circle cx=\"534.0\" cy=\"290\" r=\"11\" fill=\"#087d84\"/><text x=\"534.0\" y=\"295\" font-size=\"15\" font-weight=\"bold\" fill=\"#fff\" text-anchor=\"middle\">5</text>\n<text x=\"534.0\" y=\"326\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Nachbearbeiten</text>\n<text x=\"534.0\" y=\"348\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">lederhart,</text>\n<text x=\"534.0\" y=\"366\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">Boden begradigen</text>\n<rect x=\"620\" y=\"290\" width=\"136\" height=\"92\" rx=\"6\" fill=\"#f5f8f8\" stroke=\"#087d84\" stroke-width=\"1.5\"/>\n<circle cx=\"688.0\" cy=\"290\" r=\"11\" fill=\"#087d84\"/><text x=\"688.0\" y=\"295\" font-size=\"15\" font-weight=\"bold\" fill=\"#fff\" text-anchor=\"middle\">6</text>\n<text x=\"688.0\" y=\"326\" font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">Brennen</text>\n<text x=\"688.0\" y=\"348\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">Rohbrand</text>\n<text x=\"688.0\" y=\"366\" font-size=\"14\" fill=\"#646464\" text-anchor=\"middle\">Mo/Mi, 950 °C</text>\n<path d=\"M141,336 L147,336\" stroke=\"#087d84\" stroke-width=\"2\" marker-end=\"url(#stl-pfeil)\"/>\n<path d=\"M295,336 L301,336\" stroke=\"#087d84\" stroke-width=\"2\" marker-end=\"url(#stl-pfeil)\"/>\n<path d=\"M449,336 L455,336\" stroke=\"#087d84\" stroke-width=\"2\" marker-end=\"url(#stl-pfeil)\"/>\n<path d=\"M603,336 L609,336\" stroke=\"#087d84\" stroke-width=\"2\" marker-end=\"url(#stl-pfeil)\"/>\n</svg></div>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "modell-erstellen",
+    "label": "Modellieren",
+    "title": "Modellieren",
+    "sections": [
+      {
+        "id": "kopf-modell",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Modellieren</h1><p>Grundlage für jeden Druck ist ein digitales 3D-Modell als STL-Datei. Es entsteht in Tinkercad, Autodesk Fusion oder Blender, oder eine KI schreibt OpenSCAD-Code dafür. Zuerst die Anforderungen prüfen, sie entscheiden, ob der Druck gelingt.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "anforderungen",
+        "accordion": false,
+        "title": "Anforderungen prüfen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Anforderungen prüfen</h2><p>Gedruckt wird mit der 4-mm-Düse im Spiralvasenmodus: ein durchgehender Strang, Schicht für Schicht aufgestapelt, wie beim Aufbauen mit einer Wulst. Prüffrage für jeden Entwurf: Könnte ich die Form mit einem Seil ohne Unterbruch aufstapeln? Daraus folgt:</p><ul><li>Geschlossener, massiver Körper ohne Hohlraum und ohne gezeichnete Wandstärke. Wand (etwa 3,5&nbsp;mm) und Boden macht der Slicer.</li><li>Jede Schicht ist eine geschlossene Linie: keine Henkel, Löcher, Deckel oder Verzweigungen, ein Objekt pro Druck.</li><li>Keine extremen Wölbungen, Knicke oder Überhänge: bis etwa 15 Grad Neigung unkritisch, über 30 Grad sackt die Druckmasse ein.</li><li>Standfläche, Öffnung und Höhe ausgewogen: schmale Böden kippen, weite Öffnungen sacken ein.</li><li>Details schmaler als die Düse (4&nbsp;mm) oder niedriger als eine Schicht (1,5&nbsp;mm) werden nicht abgebildet.</li><li>Bauraum 280 × 265&nbsp;mm, Höhe bis 305&nbsp;mm.</li><li>Druckzeit unter 80&nbsp;Minuten, länger reicht eine Tube nicht (Kontrolle beim <a href=\"/slicen\">Slicen</a>).</li><li>Schwindung einrechnen: Beim Trocknen schwindet die Druckmasse rund 5&nbsp;%, nach dem Rohbrand ist das Stück insgesamt knapp 7&nbsp;%, nach einem zweiten Brand bis 10&nbsp;% kleiner als das Modell (Werte unter <a href=\"/brennen\">Brennen</a>).</li></ul><figure class=\"schritt bildpaar\"><img src=\"/assets/wulsttechnik.jpg\" alt=\"Gefäss in Wulsttechnik, die Tonwülste liegen sichtbar als Ringe übereinander\" width=\"600\" height=\"600\" loading=\"lazy\"><img src=\"/assets/tondruck-schichten.jpg\" alt=\"Nahaufnahme: Die Düse legt den Tonstrang Schicht für Schicht auf ein gedrucktes Gefäss\" width=\"600\" height=\"482\" loading=\"lazy\"><figcaption>Links: Gefäss in Wulsttechnik, die Wülste liegen übereinander wie Druckschichten. Rechts: Gedrucktes Gefäss im Detail, Schicht für Schicht aus einem Strang. Bilder: <a href=\"https://commons.wikimedia.org/wiki/File:Coiled_Pot_by_Louise_Goodman.jpg\" rel=\"noopener noreferrer\" target=\"_blank\">Louise Goodman, Smithsonian American Art Museum</a>, gemeinfrei, via Wikimedia Commons, und <a href=\"https://3dpotter.com/faq/#copyright\" rel=\"noopener noreferrer\" target=\"_blank\">3D Potter</a>, CC BY, Ausschnitt aus einem <a href=\"https://www.youtube.com/watch?v=qlKjVaMu0mQ\" rel=\"noopener noreferrer\" target=\"_blank\">Video</a>.</figcaption></figure>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "wege",
+        "accordion": false,
+        "title": "Wege zur STL-Datei",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Wege zur STL-Datei</h2><table>\n<thead>\n<tr><th scope=\"col\">Weg</th><th scope=\"col\">Geeignet für</th><th scope=\"col\">Link und Anleitung</th></tr>\n</thead>\n<tbody>\n<tr><th scope=\"row\">Tinkercad<br><small>kostenlos, Konto nötig, im Browser</small></th><td>Einstieg, einfache Gefässe aus Grundformen oder einer gedrehten Skizze, Unterricht mit Schulklassen</td><td><a href=\"https://www.tinkercad.com/\" rel=\"noopener noreferrer\" target=\"_blank\">tinkercad.com</a>, <a href=\"/modell-erstellen#kurz-tinkercad\">Kurzanleitung</a>.</td></tr>\n<tr><th scope=\"row\">Autodesk Fusion<br><small>kostenlos für Studierende und Dozierende, Konto mit Nachweis der Hochschule, Installation nötig</small></th><td>Gefässe mit genauen Massen, rotationssymmetrische Formen, Varianten</td><td><a href=\"https://www.autodesk.com/education/edu-software/overview\" rel=\"noopener noreferrer\" target=\"_blank\">Autodesk Education</a>, <a href=\"/modell-erstellen#kurz-fusion\">Kurzanleitung</a>, <a href=\"https://tube.switch.ch/videos/LwlaYTuB2o\" rel=\"noopener noreferrer\" target=\"_blank\">Tutorial auf SWITCHtube</a>.</td></tr>\n<tr><th scope=\"row\">Blender<br><small>kostenlos, ohne Konto, Installation nötig</small></th><td>Organische, skulpturale Formen, Oberflächenmuster ab 4&nbsp;mm, anspruchsvoll</td><td><a href=\"https://www.blender.org/download/\" rel=\"noopener noreferrer\" target=\"_blank\">Download Blender</a> (ältere Intel-Macs: <a href=\"https://www.blender.org/download/lts/4-5/\" rel=\"noopener noreferrer\" target=\"_blank\">4.5 LTS</a>), <a href=\"/modell-erstellen#kurz-blender\">Kurzanleitung</a>.</td></tr>\n<tr><th scope=\"row\">KI-Code (OpenSCAD)<br><small>kostenlos, ohne Konto, im Browser, KI-Dienst je nach Anbieter</small></th><td>Mathematisch beschreibbare Formen (Wellen, Spiralen, Muster), Varianten per Parameter</td><td>Code der KI in den <a href=\"https://ochafik.com/openscad2/\" rel=\"noopener noreferrer\" target=\"_blank\">OpenSCAD Playground</a> einfügen, mit «Render» berechnen und über «Download STL» speichern. Beispiele zum Anpassen, Masse oben im Code oder unter «Customize»: <a href=\"https://ochafik.com/openscad2/#H4sIAAAAAAACE6VWYW/bNhD9KwcNA6RETpwESNd0xpCiSzds7YqkSz/YRsFIJ4sORRoUaScO8t97JCVZjp19mYHEIu/d3bu7R5lP0YJpVtXRBTxFLDN8iV+YKWkZHS9ZjUd1xvIohahWVmfocOMn8tkHyZQ0KI03HMMtmaCwqCFHCX8hZeH3ubbZPfAKbhZcM+HcZaVyWx9NJPl8xDorhappl/xulbAVynuFekFLVUqEP6VEqZmtUsg5wjcmc6hYVhrKouFG8Ax1iHUpBMInRrGAS/jEheAVGtTyCD5bHbxRG2+lRY0VvBeK2DGUFEumPkrOpISrc4ivw24CljIyUcPN178BHxZKG44aJSWdyFJhidD/jODkdPiOHkJ1rDIeM5E5tbOskOjp73fKtWgE8EsL/bCxAiNiDvDCh9msdOGHrc9MKzJRhX3vhlMDbznBm9bpD2dNgdnCN9D9vfdQwXFmtlOqO2LpvM/30XSu/2BRSCtn4KATuUKagdxuBxXZOF/KNSsFDcGDtOurrfxcvHTiIaFnghmTtJG+U6sL3EQ6ayJ99duOQBOMRlpVE7lEnWssHaFN/rcd+cbU81sqSfMlEYMkTfkqXKyPmuUNH5JxjombNUW4Qi5L5CYFqXTFBOoVcqIuuRNko6OJrHFGMialuXF1I/5i5T3tLbSCa040YteBErWtKDwdAxfjhSocDveRbPgM/ucHrqiMJtY1y7mtO2F4ncD6AqjCjFjCv3iHesaIuBdnGmSTdhKYyMJKep8QWe1DxesERhOvhjX8Cj1ZTjqJ/Aa7x+IYTuEQ4l3tD3bBiUcfQHxC1kzVMbWblmva7uVLPGyT9QJ2g+/J6tUw2MW+kjRe07KflWBxeEFs7wc675q+/05689IIB4qaXAiG1PKLIBMOsZ9FkjawOcTfuLxHQTsVN62U3XG67fTfm8bCecU8hXk3D4HG0R0FWsSdE6NOgummU7DymQh5du5qnDtco+4+TBNiM/VD2Dq+B1BzGTfvhoM25CH0TmtvZEkS4o417brurtpidRup3VhPfRO7Sjmdv4e2UqrpoOPqRjuHn7t14h0X4USOYFwoDTF3T0NSR9eJaQLeMu8sbbwBnJCx11pHpaZXgz/Br8Vr3P4r5mTr9TnulZS29VExJ/s23Ndms92YOmbhZHXMXqsnuA7benLMwvB7Xn0PCjBw/4ad60ZDTQhqshKPJeZayXihuDQ1RQmNT6FgdMOgNV0kMmbisac5TSE0MoVxYDClqgiyxAduHv1PoJtf9EzIqEBmrA73lEiw9ePAStJC5Gzh19q945g5/eCuKfVyFr0wnAWDEdEzWZYcV/5qJNijssY/0n0FPYaOo0DnX6jMuowejtp7Zkoo7fZ+Kt7mb04zf4cq1erywZMz2lLBkVAztyroQoHPzz8ALwQCfI0JAAA=\" rel=\"noopener noreferrer\" target=\"_blank\">Vase</a>, <a href=\"https://ochafik.com/openscad2/#H4sIAAAAAAACE6VWXW/bNhT9KxcaBsiJkjjplrYp8pAi61ps2YokWB/soGCka4sJRRoUaScO8t93SEq289G9zA+2eD8Oz733UPRDNhNWNG12RA+ZKJ2c81fhaiyzPSfalnfbUlRZQVlrvC05BI4ekPRqTGm0Y+2iZ48ug48mni1VrOkPxkbytrK+vCXZ0MVMWqHmomXdmMq3u2ONpN+5LWtlkKmR949RvmF9a9jOsDS1ZvqiNWsrfFNQJZm+CV1RI8raYRdLF0qWbBPWKdafkc2KlOC2ddTKsiYtY3DgwbogBC2krUgDAxANnUaGc6Ppc8AWesotu6VLoCdKMZ3F0qSmM6mUbNix1bv0l7eJElsXvVi0APyoDAAFaxDURUSphNb06ZDy82QdkA9bqZYuLv8kvpsZ6yRb1th0rGvDNdPm55jo/fADHlLLRONizFhXmFLdoFi2369N6DtC3/ahp2svCRALAU9zzDVSQs67X1/POUdPxvpaeHTrGSP6pUs58e01/M7rKQk/oVqo6zCLWAb60jSUD5ExhSSqNMKCNE8F9AfzpUBXeTDWC8avfr5LX8yJXopa0bmMQTY00DdxAEl5aQslnFtBfUdTJ7yGOuigLqM56KdDiyRD6+H8xFLXLB0oGtsIxXbBEvhJR91Yx7rlKaSKwQN5/11P8qvXt7DNrAE02pEHnjVb34AUpB4w0pAO+5QQx1F/PhynJMwwl47Pzv/80CeU0WGdi0r6Ng6pWk1oedRPZm46kdDSp9EXNFNI+BjnHySOrDPpHKQ38RovENC2ETRfDuh4HKen2FHuUOSS9igKdZAcL9W6Rwe0TfkLSe68jB3E4C1yCWubkii3cMp1jgkE1+BDV+hv4BpnERn/DTlO8E4oaz5Kc5GUx+IHRRd2Q/k3Gd4dg43KZsGVy4Junta2RG3pkG4BaY9Wgy3Ga/kuIhwi3xwGbjchrtPMZphFxLqD2/REuam47lxsdZCDrpsjC1Np2rwzF2T7hN6wvIoNWRUkId67viBQ31pRClO4oZ9X69TJWZLzMY0mxlIuw9OQjtYFXw0oem5Wnh5vh/bh3OhgoNLiXEX5/wivS/svzPGTN8Roo6Sirw/F7L9mCD9rY2+4CsySHFfMflRPSh329VRcphlvZG1mAGAnfA1XqWupdBBoslH3NVfW6HxmpHYtUFLjC5oIXMJY46othctHkeZVQamRBY0SgytUhZA530l3H15IwzC/7BGR2YSF8zZd5ZkSy/sdr6GFLPjSzRNeEMIdnIaLvJ1Ps2eON8nhVPYIz1zyIv59UOLeeBcfcaFzjMHRUhzyJ6b0YccYzjZmlkYZG2w/Td5Xbw/K+DejNouTu0jOWY+CM2WmYTXB5ciPj/8CkTgAErEIAAA=\" rel=\"noopener noreferrer\" target=\"_blank\">Tasse</a>, <a href=\"https://ochafik.com/openscad2/#H4sIAAAAAAACE6VXbW/bNhD+KwcPA+RMaW13fUvrDS3SNkPXrUi29YMTFLRMS4wl0qNIO3Gb/77nSMmWvaxfFsCxSN7Lc3fPHeUvvaWwoqp7J/SlJzKnVvKjcAWWvYcL6/MHdSZmvZR6tfE2kyw3+QKd+0Qyo53ULhw8pPc4ormXlmZS03sJL2oxsz5bkKroYqmsKFeilroyM18/uNTQeSfrrChNjV3o/WVKX0m9MNIusTSFlvSL1lJb4auUZkrSJ6FnVImscPBi6aJUmbTR1inWr3yd+7omVTuSCurYmHpIe51DoaZz6OPLw8paWZhSLpcBpNtZOQMGWVIpZA07tcoK0iq4ZEGpU4JQUNdAArsVnYY4V0bTGSMUOpe1dJvG6KuylPRBIExSmj6oslSVdNLqB/SbtzEwaV04xaKGwdelgUEhAdfqNFiZCa3p7RNKzuNuP4Qhypou/viV5M3SWKeklRpOL3VhZCGp+zem4bPBCzzExIvKBZlLPUOliwrBSvt5arh6Y6Lnrejp7pQEgLHAgY5Aitn8qNXJreHcQaOj3WBqxFtM9LRVOuPTlISfh9ry53UQLZXM3b7LgsPe0z6AeQaB1mEU3ibh8TccshqrS50DvmYi7Ts2U+yy42eP73HMJn6X87lmvrHopQbBtZjK8jPoBFbEmIc/NsprlH4tVWRzy97AKuG5K8iK3FEygNIChG5F+h27Uwt9eZDL13GTud6o4An676yYdXS3JIHuozYgL6eB35JWSoK4VRWIHSLvwizQ4r5eC5kVnKXA0bcAWcB1StrYSpTSIjrQPvZPQ2cAkDkanVF3SfnR6wX2ltbQuUICEwuCw4uvYrxs44CcLCcDPM+zKKYuJj7gOf6ff/QWYTS2LpxHSy8jSM7sR2vmqqwxIRsmnYuZ8vUVRpXYrBUQAxHixzf9yUnNAwUu9TIoIpDJZADhf7XfQxrByKTTLgdSoS2C1KXeNfhkR/d9+dAAXaP7x6GyfHz1gkOde417ASnNS+FcIlKaprTp0zj6KiUI6QC+UjqpxE2SbOiYxGRw1YeRZIqHdp3SAJ9hvx81xWR4RT+wyDCKDKFyRMkQi8zUCZiApeuzndE+FBsym2xSUvA82IJR9NMYiHQSU9qHpRF9/UobejmmuDdR8Dm8Ap5drn5uYmslkJg9YY53J32y5x7n/RcNJZpWONm7Z1bG4uZJPqlwi3AGQoIxVWonpF3wYEkjUyNp0UUlhhCaoxNx26PsdB1M7VdATGEN839MeEqSJMowumdIz/f06MmAs8GrLkn+5gs66ATtl3Q4R5B6pGdp1gmX5DlXpBVGde+R7iPAUR9JGnT9FCZcCcwPUDxQJInT5pj2x08o9+FWtHQ4O48i/KNoPX61pXiD6RYGSBzC6LZ5yaNJnsRhoigJXQq0Uey6LVG/k/XQ3YlK6Xo/2xvEEuEfwVLAG6dRN+amBGPOPeSuWa4ZdF0xzn9LqD4Kdk+lm/gnHCuXodlOiTdq9N12Y3PQswoT9qYNAFCPthC4865BjHYdSdyMM4yiubGUcHdNBijmNkC0aDi53p609kAuHHYyxlBqpoX+hr1G7Vs2uzMNSeiElLbxMc/v2wjdmXayEDbCYIujdYvsv+KJqoM2npnMYk07Wl0NGDjmf4Ot6o4ajQkk2ZS3BV4zDeaUUdrVsBITn9Jc4C0ba7xMZ8IlkwATAygmEgM7IuBhCpGVvFHulm/NAdevdwfJ3lwK5218V++VYnN77DW40OOz+FrIt5hwo1N+Va9Xee/g4FE8cGXvDie49dfh50Epbo134RHv7DLIoJVKyfpzk3n2GMSlDZqZKY3lve/mz2dPR1n4HVGY9aubAM5Zj4B7pcl5NcelJO/u/gF0a9gCkQwAAA==\" rel=\"noopener noreferrer\" target=\"_blank\">Krug</a> (je im Playground). Beispielprompt: «Erstelle OpenSCAD-Code für eine Vase, 120&nbsp;mm hoch, Boden 80&nbsp;mm Durchmesser, als geschlossenen Volumenkörper ohne Innenraum, Masse als Variablen oben im Code.»</td></tr>\n\n</tbody>\n</table>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "kurz-tinkercad",
+        "accordion": true,
+        "title": "Kurzanleitung Tinkercad: Skizze drehen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Eine halbe Gefässkontur zeichnen, Tinkercad dreht sie um die Mittelachse. So entsteht ein rundes Gefäss direkt im Browser.</p>"
+              },
+              {
+                "type": "schritte",
+                "quelle": "Screenshots Tinkercad.",
+                "schritte": [
+                  {
+                    "bild": "/assets/anleitung-tinkercad-1.jpg",
+                    "titel": "Form einfügen",
+                    "alt": "Tinkercad: Formenleiste «Einfache Formen», die Form «Skizze drehen» ist markiert",
+                    "html": "In der Formenleiste rechts unter «Einfache Formen» die Form «Skizze drehen» auf die Arbeitsebene ziehen. Der Skizzeneditor öffnet sich. Erscheint ein Hilfefenster, mit × schliessen."
+                  },
+                  {
+                    "bild": "/assets/anleitung-tinkercad-2.jpg",
+                    "titel": "Profil zeichnen",
+                    "alt": "Tinkercad-Skizze: halbe Vasenkontur links der blauen Mittelachse, rechts oben die 3D-Vorschau",
+                    "html": "Mit «−» herauszoomen, bis die ganze Höhe Platz hat. Mit dem Linienwerkzeug links der blauen Mittelachse Punkte setzen: auf der Achse unten beginnen, den Boden nach links, die Wand hinauf, oben zurück zur Achse. Neigt sich die Wand nach aussen, höchstens 1&nbsp;mm pro 4&nbsp;mm Höhe (etwa 15°), sonst sackt die Druckmasse ein. Rechts oben zeigt die Vorschau die gedrehte Form."
+                  },
+                  {
+                    "bild": "/assets/anleitung-tinkercad-3.jpg",
+                    "titel": "Profil schliessen",
+                    "alt": "Tinkercad-Skizze: geschlossenes, blau gefülltes Profil mit den Massen 70 und 38 Millimeter",
+                    "html": "Zum Schluss den ersten Punkt anklicken, das Profil füllt sich blau. Daneben stehen die Masse: 70&nbsp;mm hoch, am Bauch 38&nbsp;mm von der Achse, die Vase wird also 76&nbsp;mm breit. Die Punkte lassen sich jetzt noch verschieben."
+                  },
+                  {
+                    "bild": "/assets/anleitung-tinkercad-4.jpg",
+                    "titel": "Skizze fertigstellen",
+                    "alt": "Tinkercad: fertige Vase auf der Arbeitsebene, rechts die Eigenschaften mit Sweep 360 und Seiten 48",
+                    "html": "Oben rechts «Skizze fertigstellen». Die Vase steht auf der Arbeitsebene. Wenige «Seiten», etwa 8, machen sie kantig. «Skizze bearbeiten» öffnet das Profil wieder."
+                  },
+                  {
+                    "bild": "/assets/anleitung-tinkercad-5.jpg",
+                    "titel": "Als STL exportieren",
+                    "alt": "Tinkercad: Export-Dialog mit den Formaten OBJ, STL und GLTF",
+                    "html": "«Exportieren», Format «.STL»."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "kurz-fusion",
+        "accordion": true,
+        "title": "Kurzanleitung Autodesk Fusion: Profil drehen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Eine halbe Gefässkontur zeichnen und um die Mittelachse drehen. So entstehen rotationssymmetrische Formen mit genauen Massen.</p>"
+              },
+              {
+                "type": "schritte",
+                "quelle": "Screenshots Autodesk Fusion (Bildungslizenz).",
+                "schritte": [
+                  {
+                    "bild": "/assets/anleitung-fusion-1.jpg",
+                    "titel": "Skizze erstellen",
+                    "alt": "Autodesk Fusion: leere Skizze auf einer senkrechten Ebene",
+                    "html": "«Erstellen › Skizze erstellen», eine senkrechte Ebene anklicken. Die Ansicht dreht sich zur Ebene."
+                  },
+                  {
+                    "bild": "/assets/anleitung-fusion-2.jpg",
+                    "titel": "Boden zeichnen",
+                    "alt": "Autodesk Fusion: waagrechte Linie vom Ursprung nach rechts",
+                    "html": "Linie (Taste <kbd>L</kbd>) vom Ursprung 40&nbsp;mm nach aussen: der halbe Boden. Der Ursprung ist der Nullpunkt, in dem sich die Achsen kreuzen. Durch ihn läuft später die Drehachse, er wird zur Mitte des Bodens."
+                  },
+                  {
+                    "bild": "/assets/anleitung-fusion-3.jpg",
+                    "titel": "Aussenkontur",
+                    "alt": "Autodesk Fusion: Spline als geschwungene Aussenkontur",
+                    "html": "«Erstellen › Spline», die Variante mit Punkten auf der Kurve: vom äusseren Ende der Bodenlinie aus die Aussenkontur durch einige Punkte nach oben klicken, <kbd>Enter</kbd> beendet."
+                  },
+                  {
+                    "bild": "/assets/anleitung-fusion-4.jpg",
+                    "titel": "Profil schliessen",
+                    "alt": "Autodesk Fusion: geschlossenes, blau gefülltes Halbprofil",
+                    "html": "Linie (<kbd>L</kbd>) vom oberen Ende zur Mittelachse und entlang der Achse zurück zum Ursprung. Das geschlossene Profil wird blau."
+                  },
+                  {
+                    "bild": "/assets/anleitung-fusion-5.jpg",
+                    "titel": "Drehen",
+                    "alt": "Autodesk Fusion: Dialog Drehen mit Vorschau der Vase",
+                    "html": "«Skizze fertig stellen», dann «Erstellen › Drehen»: als Achse die senkrechte Linie anklicken, 360°, OK."
+                  },
+                  {
+                    "bild": "/assets/anleitung-fusion-6.jpg",
+                    "titel": "Fertig, exportieren",
+                    "alt": "Autodesk Fusion: fertige Vase als massiver Körper",
+                    "html": "Rechtsklick auf den Körper im Bereich «Browser» links, «Als Netz speichern», STL, Millimeter."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "kurz-blender",
+        "accordion": true,
+        "title": "Kurzanleitung Blender: verdrehter Stern",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Aus einem Kreis wird ein Stern, der hochgezogen und verdreht wird. Blender startet englisch, die Befehle stehen darum englisch. Zuerst die Einheiten einstellen, damit eine Blender-Einheit einem Millimeter entspricht: «Scene Properties › Units», Length «Millimeters», Unit Scale 0.001.</p>"
+              },
+              {
+                "type": "schritte",
+                "quelle": "Screenshots Blender 5.0.1.",
+                "schritte": [
+                  {
+                    "bild": "/assets/anleitung-blender-1.jpg",
+                    "titel": "Kreis einfügen",
+                    "alt": "Blender: Kreis auf der Grundfläche",
+                    "html": "<kbd>Shift</kbd>+<kbd>A</kbd> › «Mesh › Circle», dann unten links im Feld «Add Circle»: «Vertices» 32, «Radius» 30&nbsp;mm, «Fill Type: N-Gon»."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-2.jpg",
+                    "titel": "Jeden zweiten Punkt wählen",
+                    "alt": "Blender: Kreis im Bearbeitungsmodus, jeder zweite Punkt gewählt",
+                    "html": "<kbd>Tab</kbd> für den Bearbeitungsmodus, «Select › Checker Deselect»: jeder zweite Punkt ist gewählt."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-3.jpg",
+                    "titel": "Stern formen",
+                    "alt": "Blender: aus dem Kreis ist ein Stern geworden",
+                    "html": "<kbd>S</kbd>, dann den Zeiger nach aussen bewegen, bis ein Stern entsteht, erst dann klicken."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-4.jpg",
+                    "titel": "Hochziehen",
+                    "alt": "Blender: Stern nach oben extrudiert",
+                    "html": "<kbd>A</kbd> wählt alles, dann <kbd>E</kbd> <kbd>Z</kbd> und den Zeiger nach oben bewegen, Klick. Wer eine genaue Höhe will, tippt stattdessen die Zahl in Millimetern, zum Beispiel 110 <kbd>Enter</kbd>."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-5.jpg",
+                    "titel": "Öffnung weiten",
+                    "alt": "Blender: Deckfläche vergrössert, die Form weitet sich nach oben",
+                    "html": "<kbd>S</kbd>, den Zeiger nach aussen bewegen, Klick: Die Deckfläche ist noch gewählt, die Öffnung wird weiter."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-6.jpg",
+                    "titel": "Ringe einfügen",
+                    "alt": "Blender: Form mit waagrechten Ringen",
+                    "html": "<kbd>Ctrl</kbd>+<kbd>R</kbd>, auf eine senkrechte Kante zeigen, Klick, Rechtsklick. Dann unten links im Feld «Loop Cut and Slide» bei «Number of Cuts» 10 eintragen. Ohne diese Ringe hätte die Form nur oben und unten Punkte und könnte sich nicht gleichmässig verdrehen."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-7.jpg",
+                    "titel": "Verdrehen",
+                    "alt": "Blender: Sternform nach oben verdreht",
+                    "html": "<kbd>Tab</kbd>, dann rechts im Reiter mit dem Schraubenschlüssel «Add Modifier › Deform › Simple Deform», «Twist», «Angle» 70°, «Axis» Z. Der Modifier dreht jeden Ring etwas mehr als den darunter, so windet sich der Stern nach oben."
+                  },
+                  {
+                    "bild": "/assets/anleitung-blender-8.jpg",
+                    "titel": "Als STL exportieren",
+                    "alt": "Blender: fertige verdrehte Sternvase",
+                    "html": "«File › Export › STL», «Apply Modifiers» aktiv lassen, «Scene Unit» nicht anwählen."
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "slicen",
+    "label": "Slicen",
+    "title": "Slicen",
+    "sections": [
+      {
+        "id": "kopf-slicen",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Slicen</h1><p>Der Slicer zerlegt das 3D-Modell in Schichten und erzeugt daraus den G-Code, die Datei mit den Befehlen für den Drucker.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "slicen",
+        "accordion": false,
+        "title": "Slicen mit PrusaSlicer",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Slicen mit PrusaSlicer</h2><ol><li><a href=\"https://www.prusa3d.com/p/prusaslicer/\" rel=\"noopener noreferrer\" target=\"_blank\">PrusaSlicer</a> herunterladen und installieren.</li><li>Konfigurationssammlung herunterladen: <a href=\"https://ljuokr.github.io/keramikdruck/slicer/PotterBot-10-4mm-1mm-Z-offset.ini\" download=\"PotterBot-10-4mm-1mm-Z-offset.ini\">PotterBot-10-4mm-1mm-Z-offset.ini</a> (Spiralvasenmodus, 4-mm-Düse, Z-Offset 1&nbsp;mm).</li><li>PrusaSlicer öffnen, «Datei › Import › Importiere Konfigurationssamlung» und die heruntergeladene .ini-Datei wählen. Der Import ist nur einmal nötig, das Profil bleibt gespeichert.</li><li>Vor jedem Slicen prüfen, ob rechts in allen drei Feldern (Druckeinstellungen, Filament, Drucker) «PotterBot 10 - 4 mm, 1 mm Z-Offset» gewählt ist.<figure class=\"schritt\"><img src=\"/assets/prusa-profile.png\" alt=\"PrusaSlicer rechts oben: Druckeinstellungen, Filament und Drucker je auf PotterBot 10 - 4 mm, 1 mm Z-Offset\" width=\"640\" height=\"262\" loading=\"lazy\"><figcaption>Screenshot PrusaSlicer 2.9.6.</figcaption></figure></li><li>STL-Datei ins PrusaSlicer-Fenster ziehen und «Jetzt slicen» klicken. Im Reiter «Vorschau» prüfen: unten die Bodenschichten, darüber nur eine Aussenwand. Die geschätzte Druckzeit (Legende links, «Gesamt») muss unter 80&nbsp;Minuten liegen, so lange reicht eine Tube. Sonst das Modell verkleinern und neu slicen.<figure class=\"schritt\"><img src=\"/assets/prusa-druckzeit.png\" alt=\"Legende in der PrusaSlicer-Vorschau, unter Geschätzte Druckzeiten markiert: Gesamt 17m\" width=\"750\" height=\"452\" loading=\"lazy\"><figcaption>Legende in der Vorschau: Druckzeit gesamt 17&nbsp;Minuten, deutlich unter 80&nbsp;Minuten. Screenshot PrusaSlicer 2.9.6.</figcaption></figure><figure class=\"schritt\"><img src=\"/assets/prusa-schichten.webp\" alt=\"Animation: In der Vorschau wird der obere Schichtregler hochgeschoben, die Vase baut sich Schicht für Schicht auf, unten der gefüllte Boden, darüber eine einzige Aussenwand\" width=\"560\" height=\"627\" loading=\"lazy\"><figcaption>Mit dem Schichtregler rechts lässt sich der Druck Schicht für Schicht ansehen. Screenshots PrusaSlicer 2.9.6.</figcaption></figure></li><li>«Export G-Code». Dateiname ohne Umlaute und Leerzeichen, zum Beispiel Vorname_Objekt_Datum.gcode.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "masse-und-drucker",
+    "label": "Drucken",
+    "title": "Drucken",
+    "sections": [
+      {
+        "id": "kopf-masse",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Drucken</h1><p>Ablauf am Gerät im D031. Begriffe:</p><figure class=\"gross teile\"><img src=\"/assets/teile-extruder.jpg\" alt=\"Extruder in seine Teile zerlegt und beschriftet: Antirotator auf dem Getriebe mit Motor und Getriebeadapter, daneben die Tube, rechts zwei Dichtungsringe, Kolben, Düsenadapter und Düse\" width=\"1300\" height=\"1253\" loading=\"lazy\"><figcaption>Der Extruder, in seine Teile zerlegt.</figcaption></figure><div class=\"begriffe\"><div class=\"begriff\"><div class=\"text\"><strong>Extruder</strong>die ganze Einheit, die die Druckmasse aus der Düse presst: Motor, Getriebe, Antirotator, Tube mit Kolben, Getriebeadapter, Düsenadapter und Düse</div></div><div class=\"begriff\"><div class=\"text\"><strong>Druckmasse</strong>Verwendet wird «3D Masse G&amp;S Ton Nr. 468» von Lehmhuus (Goerg &amp; Schneider, 10-kg-Pack): Steinzeug mit 40&nbsp;% Schamotte 0 bis 0,5&nbsp;mm, brennt hellcreme.</div></div><div class=\"begriff mit-bild\"><img src=\"/assets/begriff-tube.jpg\" alt=\"Tube, durchsichtige Kartusche mit Lochreihen an beiden Enden\" width=\"350\" height=\"1345\" loading=\"lazy\"><div class=\"text\"><strong>Tube</strong>die Polycarbonat-Kartusche mit 1000&nbsp;ml</div></div><div class=\"begriff mit-bild\"><img src=\"/assets/begriff-duesenadapter.jpg\" alt=\"Düsenadapter, schwarzes Teil mit Öffnung, darunter die Düse aus Metall\" width=\"315\" height=\"515\" loading=\"lazy\"><div class=\"text\"><strong>Düsenadapter</strong>unten an der Tube, hält die Düse (englisch Nozzle)</div></div><div class=\"begriff mit-bild\"><img src=\"/assets/begriff-getriebeadapter.jpg\" alt=\"Getriebeadapter, schwarzes Rundteil mit Schraubenbohrungen unter dem Getriebe\" width=\"340\" height=\"240\" loading=\"lazy\"><div class=\"text\"><strong>Getriebeadapter</strong>oben an der Tube, verbindet sie mit dem Getriebe</div></div><div class=\"begriff mit-bild\"><img src=\"/assets/begriff-antirotator.jpg\" alt=\"Antirotator, Vierkantstab aus Aluminium\" width=\"600\" height=\"118\" loading=\"lazy\"><div class=\"text\"><strong>Antirotator</strong>der Vierkantstab über dem Getriebe. Er hindert die Spindel am Mitdrehen, so fährt sie nur auf und ab und schiebt den Kolben vor.</div></div><div class=\"begriff\"><div class=\"text\"><strong>PRIME</strong>Job, der die Druckmasse vorschiebt und so Druck aufbaut, damit sie aus der Düse kommt</div></div><div class=\"begriff\"><div class=\"text\"><strong>RETRACT</strong>Job, der den Kolben zurückzieht und Tube und Spindel entlastet</div></div></div><p class=\"bildquelle\">Fotos aus dem D031.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "masse-vorbereiten",
+        "accordion": true,
+        "title": "1. Druckmasse aufbereiten, kneten, prüfen, befüllen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Die Druckmasse lagert im D031.</p><ol><li>Aufbereiten, am Vortag oder früher: Originalverpackung wägen. Ist sie leichter als aufgedruckt, mit Wasser auf das aufgedruckte Gewicht bringen, luftdicht verschliessen und über Nacht, besser länger, durchziehen lassen.<figure class=\"schritt\"><img src=\"/assets/masse-aufbereiten.jpg\" alt=\"Tonblock in der offenen Verpackung, aufgeschnitten, ein feuchtes Tuch wird darübergelegt, daneben ein Becher Wasser\" width=\"720\" height=\"640\" loading=\"lazy\"><figcaption>Wasser zur Druckmasse in die Verpackung geben. Bild: <a href=\"https://3dpotter.com/faq/#copyright\" rel=\"noopener noreferrer\" target=\"_blank\">3D Potter</a>, CC BY, Ausschnitt aus einem <a href=\"https://www.youtube.com/watch?v=s0_qw-ExdOU\" rel=\"noopener noreferrer\" target=\"_blank\">Video</a>.</figcaption></figure></li><li>Kneten: Das Wasser zieht nicht überall gleich ein, aussen ist die Druckmasse weicher als innen. Darum die Portion für eine Tube durchkneten: mit beiden Handballen schräg nach vorn und unten drücken, mit den Fingern zurückrollen, etwa 30-mal wiederholen. Ist sie noch nicht weich genug, zwischendurch mit dem Zerstäuber besprühen. Nicht umfalten und nicht mit den Fingern hineinbohren, sonst schliesst sich Luft ein. Kontrolle: mit dem Tonschneider halbieren, die Schnittfläche muss ohne Löcher sein.</li><li>Prüfen: Lässt sich die Druckmasse aus der Faust quetschen, hat sie genug Wasser. Klebt sie an den Fingern, ist es zu viel. Danach zu einem kompakten Hubel klopfen.</li><li>Befüllen, nur so viel wie für die Druckzeit nötig (eine Tube reicht für etwa 80&nbsp;Minuten). Tube nicht ganz füllen, Düsenadapter und Getriebeadapter brauchen Platz.</li><li>Tube abstechen: Die offene Tube in den Hubel drücken und die Druckmasse am Stück ausstechen, so kommt sie ohne Lufteinschlüsse hinein. Alternative: faustgrosse Kugeln einpressen, dabei entstehen leichter Lufteinschlüsse, die den Strang beim Drucken abreissen lassen.</li><li>Reste luftdicht verpacken, mit «468» und Datum beschriften.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "tube-einsetzen",
+        "accordion": true,
+        "title": "2. Tube einsetzen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p><strong>Achtung:</strong> Das Motorkabel des Extruders nur ein- oder ausstecken, wenn der Drucker am Hauptschalter ausgeschaltet ist. Sonst kann die Elektronik durchbrennen.</p><ol><li>Prüfen, ob der Drucker am Hauptschalter ausgeschaltet ist.</li><li>Vor dem Einsetzen: Kolben mit Dichtungsring in die gefüllte Tube setzen, die flache Seite zur Druckmasse. Die Lippe der Dichtung zeigt ebenfalls zur Druckmasse. Der Druck presst sie an die Tubenwand, so quillt keine Druckmasse am Kolben vorbei.<figure class=\"schritt\"><img src=\"/assets/kolben-dichtung.jpg\" alt=\"Kolben mit Dichtungsring, auf dem Kopf liegend: oben die flache Seite mit Tonspuren, die Lippe der Dichtung öffnet sich zu dieser flachen Seite hin, unten der Zapfen\" width=\"782\" height=\"880\" loading=\"lazy\"><figcaption>Dichtung richtig aufgesetzt, Kolben auf dem Kopf: Die Lippe öffnet sich zur flachen Seite. Foto aus dem D031.</figcaption></figure></li><li>4-mm-Düse in den Düsenadapter einsetzen, falls sie noch nicht drin ist. Düsenadapter und Getriebeadapter auf die gefüllte Tube setzen und mit sämtlichen Schrauben fixieren, über Kreuz und ohne Kraft anziehen, sonst nutzt sich das Gewinde im Kunststoffadapter schnell ab.</li><li>Düse mit einem feuchten Gummihandschuh verschliessen, damit sie nicht austrocknet.</li><li>Antirotator aufsetzen und mit zwei Muttern leicht befestigen, damit er nicht versehentlich herunterfällt.</li><li>Tube in die Halterung schieben, bewusst etwas höher als nötig, damit die Düse nicht auf die Druckplatte stösst, wenn der Druckkopf nach unten fährt. Klemme festziehen.<figure class=\"schritt\"><img src=\"/assets/klemme-gefuellt.jpg\" alt=\"Gefüllte Tube in der Halterung, Klemme mit der Aufschrift 3D Potter und geschlossenem Spannhebel, darunter Düsenadapter und Düse\" width=\"540\" height=\"588\" loading=\"lazy\"><figcaption>Gefüllte Tube, Klemme festgezogen. Bild: <a href=\"https://3dpotter.com/faq/#copyright\" rel=\"noopener noreferrer\" target=\"_blank\">3D Potter</a>, CC BY, Ausschnitt aus einem <a href=\"https://www.instagram.com/reel/DeSCjD5xD3v/\" rel=\"noopener noreferrer\" target=\"_blank\">Video</a>.</figcaption></figure></li><li>Motorkabel einstecken.</li><li>Erst jetzt den Drucker am Hauptschalter einschalten, dann verbinden (Abschnitt 3).</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "drucker-verbinden",
+        "accordion": true,
+        "title": "3. Drucker verbinden",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Mit dem Drucker verbunden hat der Laptop kein Internet. Die G-Code-Datei darum vorher auf dem Laptop selbst speichern, nicht nur in einer Cloud. Diese Anleitung bleibt im offenen Tab lesbar, sicherer ist «Anleitung herunterladen» unten im Menü.</p><ol><li>Im Log eintragen, QR-Code im D031 oder <a href=\"https://ljuokr.github.io/keramikdruck/log/\" rel=\"noopener noreferrer\" target=\"_blank\">ljuokr.github.io/keramikdruck/log</a>: Name, Drucker, Druckmasse.</li><li>Kurz warten, bis das WLAN des Druckers sichtbar ist.</li><li>Laptop mit dem WLAN des benutzten Druckers verbinden. Jeder Drucker (rot, blau) sendet ein eigenes WLAN, Name und Passwort stehen auf der Beschriftung am Gerät. Zeigt der Browser im nächsten Schritt den Fehler 404, ist noch ein anderer Laptop mit diesem WLAN verbunden und muss sich zuerst trennen.</li><li>Adresse im Browser eingeben: Drucker rot <a href=\"http://192.168.42.14\" rel=\"noopener noreferrer\" target=\"_blank\"><code>http://192.168.42.14</code></a>, Drucker blau <a href=\"http://192.168.42.15\" rel=\"noopener noreferrer\" target=\"_blank\"><code>http://192.168.42.15</code></a>. Es öffnet sich das Webinterface des Druckers, Duet Web Control. Es läuft auf der Steuerung im Drucker und ist nur in dessen WLAN erreichbar.</li><li>Prüfen, ob der Druckername im Webinterface zum Gerät passt.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "druck-vorbereiten",
+        "accordion": true,
+        "title": "4. PRIME ausführen und Druckhöhe einstellen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<ol><li>Im Webinterface auf dem Dashboard «Home All» ausführen.</li><li>Gummihandschuh von der Düse nehmen, dann unter «Jobs» den Job PRIME starten. Kommt die Druckmasse gleichmässig aus der Düse, den Job abbrechen («Pause», dann «Cancel»). Endet PRIME vorher, nochmals starten. Die ausgetretenen Schlaufen mit dem Tonschneider abnehmen.</li><li>Nach jedem Einsetzen der Tube die Düse knapp über die Druckplatte bringen: Den Druckkopf auf Z&nbsp;=&nbsp;0 fahren, mit den Z-Pfeilen auf dem Dashboard oder oben im Feld «Send code» mit <code>G1 X130 Y130 Z0</code> (fährt über die Mitte der Druckplatte). Weil die Tube beim Einsetzen etwas zu hoch sitzt, bleibt die Düse dabei über der Druckplatte. Jetzt die Klemme lösen (Tube festhalten, sie ist schwer), die Tube absenken, bis die Düse ganz knapp über der Druckplatte steht, ohne sie zu berühren, und die Klemme wieder festziehen. [VOR ORT PRUEFEN: Z = 0 am Gerät kontrollieren, ob das die Plattenhöhe ist]</li></ol><p>Den genauen Abstand der ersten Schicht regelt das Slicer-Profil (Z-Offset 1&nbsp;mm).</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "druck-starten",
+        "accordion": true,
+        "title": "5. Drucken, nachregeln, abbrechen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<ol><li>Im Webinterface unter «Jobs» die G-Code-Datei hochladen.<figure class=\"schritt\"><img src=\"/assets/dwc-jobs-start.png\" alt=\"Dateiliste unter Jobs mit Knopf Upload G-Code File(s) und der Rückfrage Start, Ja oder Nein\" width=\"1000\" height=\"274\" loading=\"lazy\"><figcaption>Unter «Jobs» hochladen und Start bestätigen. Bild: <a href=\"https://docs.duet3d.com/en/User_manual/Reference/Duet_Web_Control_Manual\" rel=\"noopener noreferrer\" target=\"_blank\">Duet3D</a>, CC BY-SA.</figcaption></figure></li><li>Datei anklicken und Start bestätigen. Die ersten Schichten beobachten. Haftet der Strang nicht auf der Druckplatte, die Düse mit Babystepping (unter «Status») in kleinen Schritten senken (minus). Wird er breit gedrückt, anheben (plus).<figure class=\"schritt\"><img src=\"/assets/erste-schichten.jpg\" alt=\"Düse über den ersten Schichten eines gedrehten Gefässes aus Ton auf der Druckplatte\" width=\"720\" height=\"667\" loading=\"lazy\"><figcaption>Die ersten Schichten. Bild: <a href=\"https://3dpotter.com/faq/#copyright\" rel=\"noopener noreferrer\" target=\"_blank\">3D Potter</a>, CC BY, Ausschnitt aus einem <a href=\"https://www.youtube.com/watch?v=yFl3xBhOEA0\" rel=\"noopener noreferrer\" target=\"_blank\">Video</a>.</figcaption></figure></li><li>Wird der Strang zu dünn oder lückenhaft, den Extrusion Factor (unter «Status») in kleinen Schritten erhöhen. Quillt zu viel Druckmasse heraus, ihn senken. Der Drucker reagiert erst etwa 5&nbsp;Sekunden nach dem Senden.<figure class=\"schritt\"><img src=\"/assets/dwc-babystepping-extrusion.png\" alt=\"Bedienfelder Z Babystepping mit plus und minus 0,05 mm und Extrusion Factors mit Schieberegler auf 100\" width=\"780\" height=\"141\" loading=\"lazy\"><figcaption>Babystepping und Extrusion Factor unter «Status». Bild: <a href=\"https://docs.duet3d.com/en/User_manual/Reference/Duet_Web_Control_Manual\" rel=\"noopener noreferrer\" target=\"_blank\">Duet3D</a>, CC BY-SA, zwei Ausschnitte zusammengesetzt.</figcaption></figure></li><li>Abbrechen («Pause», dann «Cancel»), falls der Drucker ungewohnte Geräusche macht.</li><li>Not-Halt (roter Knopf «Emergency Stop») nur bei Gefahr, etwa wenn die Düse mit etwas zusammenstösst. Danach Seite neu laden, «Home All».</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "nach-dem-druck",
+        "accordion": true,
+        "title": "6. Nach dem Druck: RETRACT, abdecken, reinigen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Mindestens 30&nbsp;Minuten Aufräumzeit einrechnen.</p><ol><li>Objekt mit dem Tonschneider von der Druckplatte lösen, auf eine Unterlage setzen, Zettel mit Name, Vorname und Datum an der Unterlage anbringen und die Unterlage auf die ausgewiesene Trocknungsfläche (Regal im D031) stellen (weiter unter <a href=\"/trocknen\">Trocknen</a>).</li><li>Folgt nicht gleich ein weiterer Druck, den Job RETRACT starten, auch bei halbvoller Tube und wenn die Druckmasse in der Tube bleibt. Sonst leiden Tube und Spindel. Er stoppt von selbst.</li><li>Nur bei baldigem Weiterarbeiten bleibt die Druckmasse in der Tube, insgesamt höchstens vier Tage: Düse mit feuchtem Tuch und übergestülptem Gummihandschuh abdecken, Name und Datum anschreiben. Länger nicht, sonst trocknet die Druckmasse aus und verstopft die Düse.</li><li>Sonst die Tube leeren: Drucker am Hauptschalter ausschalten, erst dann das Motorkabel ausstecken, Klemme lösen, Tube herausnehmen. Weiche Reste mit einem Löffel herausholen und luftdicht verpacken, nie mit anderen Tonen mischen. Tube, Adapter und Düse zum Reinigen auseinandernehmen und nur am Waschbecken mit Tonabscheider ausspülen (A027, D023).</li><li>In beiden Fällen Druckplatte, Tonschneider und Arbeitsfläche feucht abwischen. Tonreste nie in den Kehricht: ungebrannte in den kleinen weissen Eimer in der Kiste mit dem Ton geben (Wiederaufbereitung), gebrannte als Inertstoff entsorgen.</li><li>Zuletzt den Laptop vom Drucker-WLAN trennen und den Drucker am Hauptschalter ausschalten, falls er noch eingeschaltet ist.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "trocknen",
+    "label": "Trocknen",
+    "title": "Trocknen",
+    "sections": [
+      {
+        "id": "kopf-trocknen",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Trocknen</h1><p>Was in den Tagen nach dem Druck folgt.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "trocknen",
+        "accordion": false,
+        "title": "Trocknen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<ol><li>Langsam und gleichmässig trocknen: keine Heizung, keine Sonne, kein Durchzug, sonst reisst oder verzieht sich das Stück. Mit einem feuchten Tuch oder Putzlappen möglichst vollständig bedecken.</li><li>Sobald das Stück lederhart ist, meist nach ein bis zwei Tagen, den Boden nacharbeiten, danach wieder abdecken.</li><li>Spätestens nach einer Woche aus dem Regal im D031 nehmen, mit dem Zettel. Noch feuchte Stücke abgedeckt ins Studierendenlager bringen, bis sie vollständig durchgetrocknet sind. In eine Kiste im D021 kommen nur völlig durchgetrocknete Stücke (woran man das erkennt, steht unter <a href=\"/brennen\">Brennen</a>). Die Unterlagen aus Aluminium bleiben immer im D031.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "nachbearbeitung",
+    "label": "Nachbearbeiten",
+    "title": "Nachbearbeiten",
+    "sections": [
+      {
+        "id": "kopf-nachbearbeitung",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Nachbearbeiten</h1>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "boden-nacharbeiten",
+        "accordion": false,
+        "title": "Boden nacharbeiten",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Boden nacharbeiten</h2><p><strong>Achtung:</strong> Schleifen ist im D031 nicht erlaubt (Staub, siehe <a href=\"/regeln-d031\">Regeln</a>). Im Nassraum A027, im SOL-Raum TTG (D012) oder draussen arbeiten.</p><ol><li>Am besten lederhart: Die Druckmasse klebt nicht mehr, fühlt sich kühl an und lässt sich noch schneiden.</li><li>Standfläche (die ersten drei Schichten) mit Schlinge oder Schaber begradigen, untere Kante mit dem Cutter leicht abschrägen, mit feuchtem Schwamm glätten. So entsteht kein Staub.</li><li>Ist das Stück schon trocken, ist es brüchig. Dann statt Schritt 2 mit leicht feuchtem Schleifpapier oder Schwamm und wenig Druck arbeiten. Staub nicht wegpinseln, sonst gelangt er in die Atemluft.</li><li>Reste mit feuchtem Tuch aufnehmen, Schwamm und Tuch nur am Waschbecken mit Tonabscheider ausspülen (A027, D023). Ein lederhartes Stück danach wieder abdecken.</li></ol>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "brennen",
+    "label": "Brennen",
+    "title": "Brennen",
+    "sections": [
+      {
+        "id": "kopf-brennen",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Brennen</h1>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "brennen",
+        "accordion": false,
+        "title": "Brennen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<p>Den Brennofen bedienen nur die verantwortlichen Dozierenden.</p><ol><li>Stück vollständig durchtrocknen lassen, feuchte Stücke können im Ofen platzen. Trocken ist es, wenn es überall gleich hell ist und sich nicht mehr kühl anfühlt, frühestens nach einer Woche bei Raumtemperatur.</li><li>Erst dann, mit Name und Datum beschriftet, in die Kisten im D021 neben dem Brennofen legen, feuchte Stücke gehören nicht hinein. Früh mit den verantwortlichen Dozierenden absprechen, gegen Semesterende ist der Ofen stark ausgelastet. Gebrannt wird nach Möglichkeit in einem bereits geplanten Brand: <a href=\"https://teamup.com/ksmhk5euuqqm6mw9mt\" rel=\"noopener noreferrer\" target=\"_blank\">Brennofenkalender</a> (Rohbrand, auch Schrühbrand, montags und mittwochs bei 950&nbsp;°C).</li><li>Beim Rohbrand (je nach Programm 950 bis 1050&nbsp;°C) wird das Stück fest, bleibt aber porös und schwindet nur wenig. Fast dicht wird die Druckmasse erst in einem zweiten Brand bei 1200 bis 1240&nbsp;°C. Ob und wann ein zweiter Brand folgt, mit den verantwortlichen Dozierenden klären.</li></ol><div class=\"diagram\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 760 330\" role=\"img\" aria-labelledby=\"brenn-title brenn-desc\" font-family=\"Lato, Arial, sans-serif\" fill=\"#222\">\n<title id=\"brenn-title\">G&amp;S 468 nach Brenntemperatur</title>\n<desc id=\"brenn-desc\">Wasseraufnahme, Schwindung und Zustand der Druckmasse G&amp;S 468 bei vier Brenntemperaturen. 950 Grad, Rohbrand montags und mittwochs: Wasseraufnahme über 9 Prozent, Schwindung gesamt unter 7 Prozent, porös. 1070 Grad: 9 Prozent, Schwindung 7 Prozent, fester, noch porös. 1140 Grad: 6 Prozent, Schwindung 9 Prozent, dichter. 1200 bis 1240 Grad: 2 Prozent, Schwindung 10 Prozent, fast dicht. Wasserdicht wird ein Gefäss nur mit Glasur.</desc>\n<g font-size=\"15\" fill=\"#646464\">\n<text x=\"14\" y=\"128\">Wasser-</text>\n<text x=\"14\" y=\"146\">aufnahme</text>\n<text x=\"14\" y=\"244\">Schwindung</text>\n<text x=\"14\" y=\"262\">gesamt</text>\n<text x=\"14\" y=\"300\">Zustand</text>\n</g>\n<g font-size=\"17\" font-weight=\"bold\" text-anchor=\"middle\">\n<text x=\"250\" y=\"24\">950 °C</text>\n<text x=\"395\" y=\"24\">1070 °C</text>\n<text x=\"540\" y=\"24\">1140 °C</text>\n<text x=\"685\" y=\"24\">1200-1240 °C</text>\n</g>\n<g font-size=\"14\" text-anchor=\"middle\" fill=\"#646464\">\n<text x=\"250\" y=\"44\">Rohbrand Mo/Mi</text>\n</g>\n<line x1=\"180\" y1=\"200\" x2=\"750\" y2=\"200\" stroke=\"#ccd9da\" stroke-width=\"1.5\"/>\n<g fill=\"#087d84\">\n<rect x=\"220\" y=\"84\" width=\"60\" height=\"116\" rx=\"3\" fill=\"#9cc7ca\"/>\n<rect x=\"365\" y=\"105\" width=\"60\" height=\"95\" rx=\"3\"/>\n<rect x=\"510\" y=\"137\" width=\"60\" height=\"63\" rx=\"3\"/>\n<rect x=\"655\" y=\"179\" width=\"60\" height=\"21\" rx=\"3\"/>\n</g>\n<g font-size=\"16\" font-weight=\"bold\" text-anchor=\"middle\">\n<text x=\"250\" y=\"77\">über 9 %</text>\n<text x=\"395\" y=\"98\">9 %</text>\n<text x=\"540\" y=\"130\">6 %</text>\n<text x=\"685\" y=\"172\">2 %</text>\n</g>\n<g stroke=\"#ccd9da\" stroke-width=\"1.5\" fill=\"#f5f8f8\">\n<rect x=\"190\" y=\"222\" width=\"120\" height=\"44\" rx=\"6\"/>\n<rect x=\"335\" y=\"222\" width=\"120\" height=\"44\" rx=\"6\"/>\n<rect x=\"480\" y=\"222\" width=\"120\" height=\"44\" rx=\"6\"/>\n<rect x=\"625\" y=\"222\" width=\"120\" height=\"44\" rx=\"6\"/>\n</g>\n<g font-size=\"16\" text-anchor=\"middle\">\n<text x=\"250\" y=\"250\">unter 7 %</text>\n<text x=\"395\" y=\"250\">7 %</text>\n<text x=\"540\" y=\"250\">9 %</text>\n<text x=\"685\" y=\"250\">10 %</text>\n</g>\n<g font-size=\"15\" text-anchor=\"middle\" font-weight=\"bold\">\n<text x=\"250\" y=\"300\">porös</text>\n<text x=\"395\" y=\"300\">fester, porös</text>\n<text x=\"540\" y=\"300\">dichter</text>\n<text x=\"685\" y=\"300\">fast dicht</text>\n</g>\n</svg>\n</div><p class=\"bildquelle\">Werte laut <a href=\"https://www.bildhau.de/de/goerg-schneider-ton-468-schamottiert-weiss-hellcreme\" rel=\"noopener noreferrer\" target=\"_blank\">Datenblatt G&amp;S 468</a>, für 950&nbsp;°C geschätzt. Schwindung gesamt: Trocknen rund 5&nbsp;% plus Brand.</p><p>Wasserdicht wird ein Gefäss nur mit Glasur, das Glasieren wird im Atelier Mineralische Werkstoffe behandelt.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "regeln-d031",
+    "label": "Regeln D031",
+    "title": "Regeln im D031",
+    "sections": [
+      {
+        "id": "kopf-regeln",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Regeln im D031</h1><p>Nutzungskonzept D031 / 3D-Keramikdruck, Stand Juni 2026. «Extruder» meint darin die Einheit aus Tube, Düse, Getriebe und Motor, «Nozzle» die Düse.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "nutzungskonzept",
+        "accordion": false,
+        "title": "Nutzungskonzept D031",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<div class=\"regeln\"><h2>Zugang</h2><ul><li>Der Raum steht Dozierenden und Studierenden offen, die in die Arbeit mit dem 3D-Keramikdrucker eingeführt wurden.</li><li>Lehrveranstaltungen und Vor- und Nachbereitungsarbeiten im Zusammenhang mit Lehrveranstaltungen haben Vorrang vor der individuellen Nutzung durch Studierende.</li><li>Studierende nutzen den Raum während Lehrveranstaltungen, der Offenen Werkstatt bzw. im Rahmen von Coachings. Jede Nutzung ist in der <a href=\"https://ljuokr.github.io/keramikdruck/log/\" rel=\"noopener noreferrer\" target=\"_blank\">Liste</a> einzutragen.</li></ul><h2>Raumnutzung</h2><ul><li>Schleifarbeiten sind wegen der Staubentwicklung nicht im D031 durchzuführen.</li><li>Bei der Arbeit mit grösseren Gruppen können die Drucker in den Nassraum (A027) transportiert und dort eingesetzt werden.</li><li>Arbeiten, die im D031 getrocknet werden, sind mit Namen und Datum zu beschriften, auf der ausgewiesenen Trocknungsfläche zu deponieren und sind nach spätestens einer Woche ins Studierendenlager oder in die Kisten im D021 zu transportieren.</li></ul><h2>Umgang mit den Druckern</h2><ul><li>Material maximal vier Tage im Extruder belassen (Nozzle mit Gummihandschuh und feuchtem Tuch bedecken), danach trocknet es aus und verstopft die Nozzle. Möglichst nur so viel Ton in die Tubes abfüllen, wie benötigt wird.</li><li>Nach jedem Gebrauch Retract durchführen, um Tube und Spindel zu entlasten. Tube immer mit sämtlichen Schrauben fixieren. So verteilt sich die Last auf alle Befestigungspunkte. Beide Massnahmen verlängern die Lebensdauer der Tubes.</li><li>Extruder-Motor nur bei ausgeschaltetem Drucker (Hauptschalter) ein- oder ausstecken. Andernfalls besteht die Gefahr, dass die Elektronik durchbrennt.</li><li>Störungen und Defekte an die Hilfsassistierenden TTG technisch (Alain Wittwer, Michael Steiner) und Fachbereichskoordination (Lukas Jordi) melden (bitte alle drei anschreiben).</li></ul><h2>Reinigung und Wiederaufbereitung / Entsorgung</h2><ul><li>Nach jeder Nutzung genügend Zeit einplanen, um Drucker (insbesondere Extruder inkl. Nozzle) und Raum zu reinigen. Abspülen von Keramikresten nur an Waschbecken mit Tonabscheider (A027, D023).</li><li>Tonreste dürfen nicht im Abfall entsorgt werden. Luftdicht verpackt können diese erneut abgefüllt werden. Andernfalls sind sie der Wiederaufbereitung zuzuführen oder als Inertstoffe zu entsorgen.</li></ul><h2>Brennen</h2><ul><li>Der Brennofen ist insbesondere gegen Semesterende jeweils stark ausgelastet. Brennarbeiten nach Möglichkeit mit bereits geplanten Bränden kombinieren. Brennofenkalender: <a href=\"https://teamup.com/ksmhk5euuqqm6mw9mt\" rel=\"noopener noreferrer\" target=\"_blank\">teamup.com/ksmhk5euuqqm6mw9mt</a> (Anfrage an verantwortliche Dozierende, der Brennofen darf nicht durch Studierende bedient werden)</li></ul></div>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "schublade",
+        "accordion": false,
+        "title": "Schublade nach der Nutzung",
+        "anchor": "",
+        "gallery": false,
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Schublade nach der Nutzung</h2><p>Kontrollieren, ob alles wieder so eingeräumt ist.</p><figure class=\"gross hoch\"><img src=\"/assets/schublade.jpg\" alt=\"Eingeräumte Schublade mit den Teilen beider Drucker: je eine Tube, Antirotator mit Getriebe und Motor, Düsenadapter, Kolben, Dichtungsringe und Düse\" width=\"1200\" height=\"1600\" loading=\"lazy\"><figcaption>So ist die Schublade richtig eingeräumt. Foto aus dem D031.</figcaption></figure>"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ressourcen",
+    "label": "Ressourcen",
+    "title": "Ressourcen",
+    "sections": [
+      {
+        "id": "kopf-ressourcen",
+        "accordion": false,
+        "title": "",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Ressourcen</h1><p>Externe Quellen zum Vertiefen. Die Anleitung selbst kommt ohne sie aus.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "res-drucker",
+        "accordion": false,
+        "title": "Drucker und Druckmasse",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Drucker und Druckmasse</h2><ul><li><a href=\"https://yourshop.lehmhuus.ch/de/2555-3d-ton-fuer-potterbot-drucker_\" rel=\"noopener noreferrer\" target=\"_blank\">Lehmhuus: 3D-Ton für PotterBot</a>: Bezugsquelle der «3D Masse G&amp;S Ton Nr. 468» und weiterer 3D-Massen</li><li><a href=\"https://3dpotter.com/faq/\" rel=\"noopener noreferrer\" target=\"_blank\">3D Potter FAQ</a>: Hersteller-FAQ zu Druckmasse, Extruder, WLAN und Slicer (englisch)</li><li><a href=\"https://docs.duet3d.com/User_manual/Reference/Duet_Web_Control_Manual\" rel=\"noopener noreferrer\" target=\"_blank\">Duet Web Control Handbuch</a>: Dokumentation des Webinterfaces, das auf dem Drucker läuft (englisch)</li><li><a href=\"https://www.werken.ch/druck\" rel=\"noopener noreferrer\" target=\"_blank\">Werkspuren 2/2022 «Druck»</a>: Heft Nr. 166 mit dem Beitrag zum Drucklabor der PHBern und dem Porzellandruck auf den PotterBots (S. 37)</li></ul>"
+              },
+              {
+                "type": "html",
+                "html": "<h3>Videos von 3D Potter Tech Support</h3><p>Englisch, Lizenz CC BY. Die Videos laden erst auf Klick von YouTube.</p>"
+              },
+              {
+                "type": "html",
+                "html": "<p><strong>Version 10 Operation</strong> (6 Minuten): Ablauf vom Verbinden bis zum ersten Druck. Im D031 gilt die Reihenfolge unter <a href=\"/masse-und-drucker#tube-einsetzen\">Drucken</a>.</p>"
+              },
+              {
+                "type": "video",
+                "src": "https://www.youtube-nocookie.com/embed/qlKjVaMu0mQ",
+                "title": "Version 10 Operation: Starting Guide On Version 10 Printer Use",
+                "label": "Video Version 10 Operation abspielen",
+                "provider": "YouTube",
+                "poster": "/assets/video-qlKjVaMu0mQ.jpg"
+              },
+              {
+                "type": "html",
+                "html": "<p><strong>Extruder height placement and tightening</strong>: Tube in die Halterung schieben, Höhe einstellen, Klemme festziehen.</p>"
+              },
+              {
+                "type": "video",
+                "src": "https://www.youtube-nocookie.com/embed/jiaYSI51UXU",
+                "title": "Extruder height placement and tightening",
+                "label": "Video Extruder height placement and tightening abspielen",
+                "provider": "YouTube",
+                "poster": "/assets/video-jiaYSI51UXU.jpg"
+              },
+              {
+                "type": "html",
+                "html": "<p><strong>Acme nut, Acme screw, and Anti-rotator Connection</strong>: Zusammenspiel von Spindel, Spindelmutter, Kolben und Antirotator, dazu Reinigen und Fetten der Spindel.</p>"
+              },
+              {
+                "type": "video",
+                "src": "https://www.youtube-nocookie.com/embed/8Gykr2KF7rY",
+                "title": "Acme nut, Acme screw, and Anti-rotator Connection",
+                "label": "Video Acme nut, Acme screw, and Anti-rotator Connection abspielen",
+                "provider": "YouTube",
+                "poster": "/assets/video-8Gykr2KF7rY.jpg"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "res-slicen",
+        "accordion": false,
+        "title": "Slicen",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Slicen</h2><ul><li><a href=\"https://help.prusa3d.com/de/article/wie-importiert-und-exportiert-man-benutzerdefinierte-profile-in-prusaslicer_382766\" rel=\"noopener noreferrer\" target=\"_blank\">Prusa-Hilfe: Profile importieren und exportieren</a>: falls der Import der Konfigurationssammlung unter <a href=\"/slicen\">Slicen</a> nicht klappt</li><li><a href=\"https://help.prusa3d.com/de/article/schichten-und-konturen_1748\" rel=\"noopener noreferrer\" target=\"_blank\">Prusa-Hilfe: Schichten und Konturen</a>: dort ist auch der Spiralvasenmodus erklärt</li></ul>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      },
+      {
+        "id": "res-keramik",
+        "accordion": false,
+        "title": "Tondruck und Keramik",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h2>Tondruck und Keramik</h2><ul><li><a href=\"https://www.keep-art.co.uk/clay-3d-printing\" rel=\"noopener noreferrer\" target=\"_blank\">Jonathan Keep: Clay 3D Printing</a>: Pionier des Tondrucks, kostenloser Leitfaden als PDF (englisch)</li><li><a href=\"https://www.making.unsw.edu.au/learn/clay_printing/\" rel=\"noopener noreferrer\" target=\"_blank\">UNSW Making: 3D Clay Printing Basics</a>: kurze Grundlagen zu Entwurf und Druck (englisch)</li><li><a href=\"https://naturelab.risd.edu/collections/biomaterials-natural-pigments-and-fabrication/\" rel=\"noopener noreferrer\" target=\"_blank\">RISD Nature Lab: PotterBot</a>: Anleitung einer Hochschule zum PotterBot, für Pasten aus Biomaterial statt Ton (englisch)</li><li><a href=\"https://portal-media.cca.edu/documents/3D_Printing_Clay_Wiki_-_CURRENT.pdf\" rel=\"noopener noreferrer\" target=\"_blank\">CCA: 3D Printing Clay Wiki</a>: Betriebsregeln und Reinigung an einer Kunsthochschule (PDF, englisch)</li><li><a href=\"https://www.burg-halle.de/home/523_hilberer/clayprinting/Keramik-Lab-Doku.pdf\" rel=\"noopener noreferrer\" target=\"_blank\">Burg Halle: Keramik-Lab-Doku</a>: Versuchsreihen mit Porzellan- und Tonmassen, Wasserzugabe und Druckbild (PDF)</li><li><a href=\"https://digitalfire.com/glossary/drying+crack\" rel=\"noopener noreferrer\" target=\"_blank\">Digitalfire: Drying crack</a>: warum Stücke beim Trocknen reissen und was dagegen hilft (englisch)</li><li><a href=\"https://www.suva.ch/de-ch/download/factsheets/silikose/silikose\" rel=\"noopener noreferrer\" target=\"_blank\">Suva: Factsheet Silikose</a>: Staublunge durch Quarzstaub, Krankheitsbild und Vorbeugung</li></ul>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  },
+  {
+    "slug": "impressum",
+    "label": "Impressum",
+    "title": "Impressum",
+    "sections": [
+      {
+        "id": "impressum-text",
+        "accordion": false,
+        "title": "Impressum",
+        "anchor": "",
+        "cells": [
+          {
+            "blocks": [
+              {
+                "type": "html",
+                "html": "<h1>Impressum</h1><p>Fragen und Rückmeldungen zur Seite an <a href=\"mailto:lukas.jordi@phbern.ch\">lukas.jordi@phbern.ch</a>. Störungen und Defekte an den Druckern: siehe <a href=\"/regeln-d031\">Regeln im D031</a>.</p><p>Lukas Jordi, PHBern, Fachbereich TTG / Design &amp; Technik, in Co-Autorschaft mit Claude (KI-Assistent von Anthropic). Stand Oktober 2026.</p><p><a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de\" rel=\"license noopener noreferrer\" target=\"_blank\"><img src=\"/assets/lizenz-cc-by-nc-sa.png\" alt=\"Lizenz Creative Commons BY-NC-SA 4.0\" width=\"134\" height=\"47\"></a></p><p>Die Seite steht unter der Lizenz Creative Commons BY-NC-SA 4.0. Ausgenommen sind Bilder Dritter, ihre Lizenz steht jeweils in der Bildunterschrift.</p>"
+              }
+            ]
+          }
+        ],
+        "gallery": false
+      }
+    ]
+  }
+]
