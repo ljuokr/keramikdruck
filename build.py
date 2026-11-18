@@ -133,7 +133,7 @@ def icon(name: str, size: int = 22, cls: str = "") -> str:
 
 def embed_inline_images(markup: str) -> str:
     """Bilder in HTML-Bloecken (src="/assets/x.png") genauso einbetten wie Bildbloecke."""
-    return re.sub(r'src="/assets/([^"]+)"', lambda m: f'src="{embed_image(m[1])}"', markup)
+    return re.sub(r'(src|poster)="/assets/([^"]+)"', lambda m: f'{m[1]}="{embed_image(m[2])}"', markup)
 
 
 def render_block(block: dict) -> str:
